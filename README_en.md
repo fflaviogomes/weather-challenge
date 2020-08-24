@@ -2,64 +2,62 @@
 
 Esse desafio também está disponível em português pelo [link](https://github.com/bioritmo/weather-challenge/blob/master/README.md)  
 
-## O Desafio
+## The Challenge
 
-Você recebeu a tarefa de desenvolver algumas features para um site de previsão do tempo.
+You received a task to develop some features to a weather forecast site.
 
-O site pega a previsão de uma API pública e exibe na tela. Hoje o MVP só mostra a previsão de uma cidade fixa, São Paulo, e em Fahrenheit.
+The site takes the weather forecast from a public API and display it. Currently, this MVP only shows the weather forecast for a single city, São Paulo -SP, Brazil. Also, it only displays the temperature in Fahrenheit. 
 
-A Análise de Negócios mapeou as seguintes histórias em ordem de prioridade:
+The Business analyst requested you to develop some demands:
 
-1. Mostrar as temperaturas também em graus Celsius. Só que a API só permite chamar um tipo de temperatura por vez, então vamos fazer nossa própria conversão.
-2. Ter uma pequena lista de cidades e permitir o usuário escolher de que cidade vai querer ver a previsão. Nem todo mundo mora em São Paulo, afinal de contas.
-3. Obter a cidade do usuário automaticamente, mesmo que aproximado e deixar pré-escolhida como padrão.
-4. Queremos ter um aplicativo para celular, e para isso precisamos pegar a previsão do nosso próprio site.
-5. Ao invés de sempre ter que procurar a cidade, as pessoas poderiam se registrar e adicionar e remover cidades favoritas.
-
-
-## Detalhes técnicos
-
-Na história 1, faça uma classe para conversão de temperaturas. Ela recebe uma temperatura em Fahrenheit (F) e converte para Celsius (C). Use essa classe para exibir a temperatura na tela, ao lado da temperatura em Fahrenheit. 
-
-Na história 2, coloque um campo de texto para passar o nome da cidade, repasse para a API, e mostre a previsão da cidade selecionada. Bônus se fizer sem que seja necessário recarregar a página.
-
-Na história 3, obtenha a cidade aproximada do usuário de alguma forma (você pode escolher alguma biblioteca ou API
-que te forneça essa informação) e mostre a previsão por padrão dessa cidade selecionada.
-
-Na história 4, faça uma API pública REST para consulta da previsão. O endpoint será `/api/forecast?city=` e deverá retornar um JSON, com os mesmos campos retornados pela API do OpenWeatherMap. Não é necessário implementar autenticação da API.
-
-Na história 5, crie uma tabela 'favorite_cities' e modele o banco a partir daí. Não precisa se preocupar com autenticação. Pode assumir que sempre haverá apenas um usuário.
+1. The site should show temperatures also in Celsius degree. However, the public API allows to request only on temperature format at time. Thus, you should implement your own conversion service.
+2. The site should the user to choose the city he want to receive the weather forecast. After all, the system needs to support people from other cities as well.
+3. The site should automatically select the user city, even though if it is an approximate solution based. This city should be selected by default. Please note that the user still able to select other city regarding the task 2.
+4. The company also wants to have a mobile app that also displays the weather forecast consuming the data from our own web server.
+5. In addition to search for cities, the site should allow the user to save and remove favorite cities.
 
 
-## Orientações gerais
+## Technical details
 
-* Procure focar em pequenos entregáveis. Tem flexibilidade para escolher a ordem das entregas. **Tudo bem se não conseguir entregar tudo**. Use o tempo disponível **para apresentar a qualidade do seu código, sua criatividade e perícia em resolver problemas**. 
-* Nós iremos avaliar a qualidade no código, as boas práticas e sua atenção com a qualidade na implementação. Tenha atenção aos detalhes e
-busque tratar condições anormais de execução.
-* Caso não seja possível finalizar as histórias da maneira como você gostaria (pode ser esperado de acordo com o prazo enviado). Você pode complementar seu desafio com um texto ou comentários de como teria implementado a solução caso tivesse mais tempo. 
-* O README deverá ter instruções detalhadas de como rodar a aplicação e como gerar eventuais dados necessários a aplicação.
-* Envie-nos um link para um repositório seu ou um arquivo ZIP com a sua solução. **Não abra PRs para este repositório.**
-* Faça testes unitários para models e serviços. Testes de integração também são bem vindos.
-* Se quiser mostrar suas habilidades em HTML/CSS, você pode estilizar a página como achar conveniente. Caso a vaga seja estritamente para trabalhar no backend, não precisa focar nessa parte.
-* Se quiser mostrar suas habilidades em Javascript puro ou algum framework JS, fique à vontade. Isso é particularmente importante caso a vaga seja de full-stack ou frontend.
-* Não abuse das chamadas à API do OpenWeatherMap, já que é uma conta free. Você pode configurar sua própria conta caso precise de mais chamadas. 
-* Documentação da API: [Current weather data - OpenWeatherMap](https://openweathermap.org/current)
-* Caso tenha alguma dúvida sobre esse desafio, você pode nos encaminhar via e-mail.
-## Instruções
+At task 1, provide a class to convert the temperature. It receives it in Fahrenheit (F) and converts it to Celsius (C). Use it to display the temperature on the screen. The site should display both temperatures ( F and C).  
 
-### Docker
+At task 2, include a search text field to allow the user to type the city name. You should send it to the API and display the weather forecast. You will receive a better evaluation if this action does not require page refreshing.
+
+At task 3, get the user approximate city from some source (feel free to use some library or API) and uses it as default city to display the weather forecast.
+
+At task 4, creates a public REST API endpoint that retrieves a weather forecast. The endpoint path is `/api/forecast?city=` and it responds with JSON format. It retrieves the same fields of the OpenWeatherMap API. You do not need to implement authentication mechanism on this endpoint.
+
+At final task 5, create a data table 'favorite_cities' and design the solution from it. You can assume that there is only one user. You do not need to worry about users and authentication.
+
+## Guide
+
+* Look to conclude small steps. **Do not worry if you were not be able to conclude all tasks**. Use the available time to **show your code quality, your creativity and your solving-problem skills**.  
+* We are going to evaluate your code by its quality, conformance to good practices. Be aware of the small details and error handling.
+* If it was not possible to finish the task as you wish, you can add text notes or comments to your challenge explaining how you would finish it if you have more time. 
+* The README should have detailed instructions of how to run and also how to generate data that may be needed to run the application.
+* **You should not create Pull Requests on this project**. Instead, send us a link for your repository or a compressed file. 
+* Create unit tests for model and services. Integration tests are a plus.
+* Feel free to show your HTML/CSS skills. You can style the page as you want.
+* Feel free to show your Javascript skills (using some JS framework/library or not). This is particularly important if the opportunity is a full-stack or frontend job. 
+* Be aware of the rate limit of OpenWeatherMap API. It is a free account. You can configure your own account if you need to perform more requests.
+* API Documentation: [Current weather data - OpenWeatherMap](https://openweathermap.org/current)
+* If you have some doubt about this challenge or the hiring process, please, send us an email. 
+
+## Running the application
+
+### Using Docker
 
 ```shell
   docker-compose build
   docker-compose up
 ```
 
-Acesse em http://localhost:3000
+Open http://localhost:3000
 
-### Sem Docker
+### Without using Docker
 
 ```shell
   bin/rails server -p 3000
 ```
 
-Acesse em http://localhost:3000
+Open http://localhost:3000

@@ -8,10 +8,10 @@ Você recebeu a tarefa de desenvolver algumas features para um site de previsão
 
 O site pega a previsão de uma API pública e exibe na tela. Hoje o MVP só mostra a previsão de uma cidade fixa, São Paulo, e em Fahrenheit.
 
-A Análise de Negócios mapeou as seguintes histórias em ordem de prioridade:
+A Análise de Negócios mapeou as seguintes histórias:
 
 1. Mostrar as temperaturas também em graus Celsius. Só que a API só permite chamar um tipo de temperatura por vez, então vamos fazer nossa própria conversão.
-2. Ter uma pequena lista de cidades e permitir o usuário escolher de que cidade vai querer ver a previsão. Nem todo mundo mora em São Paulo, afinal de contas.
+2. Permitir o usuário buscar pela cidade vai querer ver a previsão. Nem todo mundo mora em São Paulo, afinal de contas.
 3. Obter a cidade do usuário automaticamente, mesmo que aproximado e deixar pré-escolhida como padrão.
 4. Queremos ter um aplicativo para celular, e para isso precisamos pegar a previsão do nosso próprio site.
 5. Ao invés de sempre ter que procurar a cidade, as pessoas poderiam se registrar e adicionar e remover cidades favoritas.
@@ -39,7 +39,7 @@ busque tratar condições anormais de execução.
 * Caso não seja possível finalizar as histórias da maneira como você gostaria (pode ser esperado de acordo com o prazo enviado). Você pode complementar seu desafio com um texto ou comentários de como teria implementado a solução caso tivesse mais tempo. 
 * O README deverá ter instruções detalhadas de como rodar a aplicação e como gerar eventuais dados necessários a aplicação.
 * Envie-nos um link para um repositório seu ou um arquivo ZIP com a sua solução. **Não abra PRs para este repositório.**
-* Faça testes unitários para models e serviços. Testes de integração também são bem vindos.
+* Faça testes unitários para models e serviços. Testes de integração são bônus.
 * Se quiser mostrar suas habilidades em HTML/CSS, você pode estilizar a página como achar conveniente. Caso a vaga seja estritamente para trabalhar no backend, não precisa focar nessa parte.
 * Se quiser mostrar suas habilidades em Javascript puro ou algum framework JS, fique à vontade. Isso é particularmente importante caso a vaga seja de full-stack ou frontend.
 * Não abuse das chamadas à API do OpenWeatherMap, já que é uma conta free. Você pode configurar sua própria conta caso precise de mais chamadas. 
