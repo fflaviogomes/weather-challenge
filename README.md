@@ -31,7 +31,7 @@ Na história 5, crie uma tabela 'favorite_cities' e modele o banco a partir daí
 
 ## Orientações gerais
 
-* Siga as histórias na ordem de prioridade. Procure focar em pequenos entregáveis. **Tudo bem se não conseguir entregar tudo**. Use o tempo disponível **para apresentar a qualidade do seu código, sua criatividade e perícia em resolver problemas**. 
+* Procure focar em pequenos entregáveis. Tem flexibilidade para escolher a ordem das entregas. **Tudo bem se não conseguir entregar tudo**. Use o tempo disponível **para apresentar a qualidade do seu código, sua criatividade e perícia em resolver problemas**. 
 * Nós iremos avaliar a qualidade no código, as boas práticas e sua atenção com a qualidade na implementação. Tenha atenção aos detalhes e
 busque tratar condições anormais de execução.
 * Caso não seja possível finalizar as histórias da maneira como você gostaria (pode ser esperado de acordo com o prazo enviado). Você pode complementar seu desafio com um texto ou comentários de como teria implementado a solução caso tivesse mais tempo. 
