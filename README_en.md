@@ -1,6 +1,6 @@
 # Weather Challenge
 
-This challenge is also available in english through the [link](https://github.com/bioritmo/weather-challenge/blob/master/README_en.md)
+Esse desafio também está disponível em português pelo [link](https://github.com/bioritmo/weather-challenge/blob/master/README.md)  
 
 ## O Desafio
 
