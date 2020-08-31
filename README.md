@@ -2,6 +2,16 @@
 
 This challenge is also available in english through the [link](https://github.com/bioritmo/weather-challenge/blob/master/README_en.md)
 
+## Objetivo
+
+O desafio basicamente consiste em ler uma API pública de previsão de tempo e implementar algumas simples funcionalidades.
+Esse mesmo desafio é usado para três posições.
+>- **Backend**: Faça todo o o desafio abaixo sem se preocupar com Javascript, HTML. estilos etc.  
+>- **Frontend**: Faça apenas as tarefas de 1 a 3 do desafio abaixo. Crie um projeto forntend zerado de sua escolha. Você deverá acessar a API de previsão de tempo diretamente. Não é necessário ter um sistema backend de apoio.
+> Você receberá um layout que deve ser implementado.
+>- **Fullstack**: Faça todo o o desafio abaixo. Você pode criar o frontend junto ou separado desse projeto contudo a sua entrega
+>deve ter instruções claras para execução de ambos. Você receberá um layout que deve ser implementado.    
+
 ## O Desafio
 
 Você recebeu a tarefa de desenvolver algumas features para um site de previsão do tempo.

@@ -2,6 +2,18 @@
 
 Esse desafio também está disponível em português pelo [link](https://github.com/bioritmo/weather-challenge/blob/master/README.md)  
 
+
+## Goal
+
+The challenge basically consists of reading a public weather forecast API and implementing some simple features.
+The same challenge is used for different job opportunities.
+Esse mesmo desafio é usado para três posições.
+>- **Backend**: Implement all task described later without care about to Javascript, HTML, styles etc.  
+>- **Frontend**: Implement only taks 1, 2 and 3. You should create a project from scratch. You should use the forecast API directly. You do not need to have a own backend server.
+>You will receive a layout for the system.
+>- **Fullstack**: Implement all task described later. You can implement the frontend on the same Ruby on Rails project or you can create a independent frontend project. However, be aware of documenting how to execute it. You will receive a layout for the system
+
+
 ## The Challenge
 
 You received a task to develop some features to a weather forecast site.
