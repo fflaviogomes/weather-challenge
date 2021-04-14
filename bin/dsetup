@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+IFS=$'\n\t'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+echo -e "${GREEN}Creates env files for development and test${NC}\n"
+
+if [ ! -f .env ]; then
+  cp .env.template .env
+fi
+
+if [ ! -f .env.test ]; then
+  cp .env.test.template .env.test
+fi
+
+echo -e "${GREEN}Build web image${NC}\n"
+
+# docker-compose build --no-cache
+
+echo -e "\n"
+
+echo -e "${GREEN}Create development database${NC}\n"
+
+docker-compose run web rake db:setup
+
+echo -e "\n"
+
+echo -e "${GREEN}Create teste database${NC}\n"
+
+ENV_FILE=.env.test docker-compose run web rake db:setup
+
+echo -e "${GREEN}Cleanup setups containers${NC}\n"
+
+docker-compose down

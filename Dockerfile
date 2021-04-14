@@ -1,25 +1,20 @@
-FROM ruby:2.6.3
+FROM ruby:2.6.3-alpine as base
+ARG RAILS_ENV
 
-RUN apt-get update -qq
+ENV BUILD_PACKAGES="linux-headers tzdata build-base libffi-dev bash sqlite-dev curl less shared-mime-info nodejs"
+RUN apk --update --upgrade add $BUILD_PACKAGES && rm /var/cache/apk/*
 
-RUN mkdir -p /weather-challenge
+FROM base as step1
 
-WORKDIR /tmp
-ADD Gemfile Gemfile
-ADD Gemfile.lock Gemfile.lock
+RUN mkdir /app
+WORKDIR /app
 
-RUN gem install bundler
-RUN bundle install
-RUN gem install bundler-audit
+COPY Gemfile /app
+COPY Gemfile.lock /app
 
-WORKDIR /weather-challenge
-ADD . /weather-challenge
+ENV BUNDLER_VERSION=2.0.1
+ARG BUNDLE_WITHOUT
+RUN gem install bundler:${BUNDLER_VERSION} && bundle config --global frozen 1 && bundle _${BUNDLER_VERSION}_ install --jobs=4
+COPY . /app
 
-# Add a script to be executed every time the container starts.
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
-
-RUN rm /etc/localtime
-RUN ln -s /usr/share/zoneinfo/Brazil/East /etc/localtime
