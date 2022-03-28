@@ -1,9 +1,15 @@
 class DashboardController < ApplicationController
+
   def index
-    @weather = get_weather2(city: 'Sao Paulo,BR', units: 'imperial')
-    #@weather = Openweather2.get_weather(city: 'Belo Horizonte, BR', units: 'metric')
+
+    @f_cidade = params[:f_cidade].to_s.strip;
+
+    @f_cidade = (!@f_cidade.empty?) ? @f_cidade : 'Sao Paulo,BR';
+
+    @weather = get_weather2(city: @f_cidade, units: 'imperial')
 
   end
+
 end
 
 #Acredito que essas funções deveriam estar em models. Não soube localizar exatamente onde colocá-la no Rails.
@@ -49,7 +55,7 @@ class TempConv
 
   def self.k_to_c(temperatureK, decimals = 2)
 
-    temperatureC = (temperatureK - 273);
+    temperatureC = (temperatureK - 273.15);
 
     return temperatureC.round(decimals)
 

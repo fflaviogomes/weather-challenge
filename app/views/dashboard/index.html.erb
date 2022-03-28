@@ -1,34 +1,50 @@
-<h1>Weather for <%= @weather.city %></h1>
+<div id="clima" />
 
-<h2><%= @weather.temperature %>&ordm;F | 
-    <%= @weather.temperatureC %>&ordm;C 
-</h2>
+  <h1>Weather for <%= @weather.city %></h1>
 
-<table>
-  <tbody>
-    <tr>
-      <td>Pressure</td>
-      <td><%= @weather.pressure %>hpa</td>
-    </tr>
-    <tr>
-      <td>Humidity</td>
-      <td><%= @weather.humidity %>%</td>
-    </tr>
-    <tr>
-      <td>Min Temperature</td>
-      <td><%= @weather.min_temperature %>&ordm;F | 
-          <%= @weather.min_temperatureC %>&ordm;C
-      </td>
-    </tr>
-    <tr>
-      <td>Max Temperature</td>
-      <td><%= @weather.max_temperature %>&ordm;F | 
-          <%= @weather.max_temperatureC %>&ordm;C
-      </td>
-    </tr>
-    <tr>
-      <td>Wind Speed</td>
-      <td><%= @weather.wind_speed %>mi/h</td>
-    </tr>
-  </tbody>
-</table>
+  <h2><%= @weather.temperature %>&ordm;F | 
+      <%= @weather.temperatureC %>&ordm;C 
+  </h2>
+
+  <table>
+    <tbody>
+      <tr>
+        <td>Pressure</td>
+        <td><%= @weather.pressure %>hpa</td>
+      </tr>
+      <tr>
+        <td>Humidity</td>
+        <td><%= @weather.humidity %>%</td>
+      </tr>
+      <tr>
+        <td>Min Temperature</td>
+        <td><%= @weather.min_temperature %>&ordm;F | 
+            <%= @weather.min_temperatureC %>&ordm;C
+        </td>
+      </tr>
+      <tr>
+        <td>Max Temperature</td>
+        <td><%= @weather.max_temperature %>&ordm;F | 
+            <%= @weather.max_temperatureC %>&ordm;C
+        </td>
+      </tr>
+      <tr>
+        <td>Wind Speed</td>
+        <td><%= @weather.wind_speed %>mi/h</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<hr>
+
+<div>
+  <%= form_with id: "formulario", url: "/",  local: false, method: :get do |form| %>
+    <%= form.label :f_cidade, "Pesquisar outra cidade:" %>
+    <%= form.text_field :f_cidade %>
+    <%= form.submit "Enviar", data: { disable_with: "Atualizando..." } %>
+  <% end %>
+</div>
+
+<hr>
