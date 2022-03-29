@@ -3,6 +3,7 @@ window.addEventListener("load", () => {
 
   const eFormulario = document.querySelector("#formulario");
   const eAlvo = document.querySelector("#clima");
+  const erroBusca = "<p>An error occurred while requesting data</p>";
 
   eFormulario.addEventListener("ajax:success", (event) => {
     const [_data, _status, xhr] = event.detail;
@@ -13,10 +14,9 @@ window.addEventListener("load", () => {
     //alert(); //querySelector("#clima").innerHTML);
 
     eAlvo.innerHTML = (htmlResponse.querySelector("#clima").innerHTML);
-    
   });
 
   eFormulario.addEventListener("ajax:error", () => {
-    eAlvo.insertAdjacentHTML("afterbegin", "<p>ERROR</p>");
+    eAlvo.insertAdjacentHTML("afterbegin", erroBusca);
   });
 });

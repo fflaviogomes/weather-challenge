@@ -1,14 +1,15 @@
+#require 'net/http'
+#require 'net/https'
+
 class DashboardController < ApplicationController
 
   def index
 
-    @f_cidade = params[:f_cidade].to_s.strip;
-
-    @f_cidade = (!@f_cidade.empty?) ? @f_cidade : 'Sao Paulo,BR';
-
-    @weather = get_weather2(city: @f_cidade, units: 'imperial')
+    @weather = get_weather2(city: get_cidade(), units: 'imperial')
 
   end
+
+  #def json; Openweather2.get_weather(lat: 35, lon: 139, units: 'imperial'); end
 
 end
 
@@ -17,7 +18,14 @@ end
 def get_weather2 (options={})
 
   #Chamada da função original 
-  @weather = Openweather2.get_weather(options);
+  #todo: rescue? UnknownResponse, UnprocessableError
+  begin
+    @weather = Openweather2.get_weather(options);  
+  rescue Openweather2::UnknownResponse
+    #@weather = Openweather2.Weather.new();
+    
+  end
+  
 
   #Conversão de F/K para C e vice-versa
   case options[:units]
@@ -61,4 +69,57 @@ class TempConv
 
   end
 
+end
+
+def get_cidade (cidade_default = "Sao Paulo, BR")
+
+  #Busca cidade por GET
+  return_cidade = params[:f_cidade];
+
+  #Se não encontrar GET tenta GeoLocation API
+  if (return_cidade.blank?)
+    loc = ipgeolocation_get()
+
+    return_cidade = loc["city"];
+
+    #Se não encontrar GeoLocation usa default
+    if (return_cidade.blank?)
+      #Default: Sao Paulo, BR
+
+      return_cidade = cidade_default;
+
+    end
+  end
+
+  return return_cidade;
+
+end
+
+#require 'net/http'
+#require 'net/https'
+
+def ipgeolocation_get
+
+  # Não funciona em ambiente de desenvolvimento ou rede local/intranet
+  # Alternativa: Javascript -> https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition
+
+  # reference: https://www.abstractapi.com/guides/how-to-do-ip-geolocation-in-ruby-on-rails
+
+  config_geolocation_api_key  = "a96a661a961e42ccaf2e798f17879d7f";
+  user_ip = request.remote_ip;
+
+  uri = URI("https://ipgeolocation.abstractapi.com/v1/?api_key=#{config_geolocation_api_key}&ip_address=#{user_ip}&fields=city,country_code")
+
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = true
+  http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+
+  request = Net::HTTP::Get.new(uri)
+
+  response = http.request(request)
+
+  return JSON.parse(response.body)
+
+rescue StandardError => error
+  puts "Error (#{ error.message })"
 end
