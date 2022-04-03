@@ -3,13 +3,19 @@
 
 class DashboardController < ApplicationController
 
+  protect_from_forgery with: :null_session, prepend: true
+
   def index
 
     @weather = get_weather2(city: get_cidade(), units: 'imperial')
 
   end
 
-  #def json; Openweather2.get_weather(lat: 35, lon: 139, units: 'imperial'); end
+  def jsonAPI
+
+    render json: buscaCidadeJSON()
+
+  end
 
 end
 
@@ -120,6 +126,29 @@ def ipgeolocation_get
 
   return JSON.parse(response.body)
 
-rescue StandardError => error
-  puts "Error (#{ error.message })"
+  rescue StandardError => error
+    puts "Error (#{ error.message })"
+end
+
+def buscaCidadeJSON
+
+  #setParams()
+  latlon = params[:latlon];
+  city   = params[:city];
+
+  if (!latlon.blank?)
+
+    latlon = latlon.split(',');
+    @weather = Openweather2.get_weather(lat: latlon[0], lon: latlon[1], units: 'imperial');
+
+  elsif (!city.blank?)
+
+    @weather = Openweather2.get_weather(city: params[:city], units: 'imperial');
+
+  else 
+
+  end
+
+  return @weather
+  
 end
