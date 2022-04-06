@@ -1,0 +1,24 @@
+<% @cidades.each do |cidade| %>
+
+    <%= form_with class: "form_favoriteCity", url: "/favorite_cities/#{cidade.id}",  local: false, method: :delete do |form| %>
+
+      <%= form.submit "❌", title: "Excluir?", data: { disable_with: "❌", confirm: "Confirma remoção de '#{cidade.city}' das cidades favoritas?" } %>
+
+        <a href="/dashboard/index?f_cidade=<%= cidade.city %>">
+          <%= cidade.city %>
+        </a>
+
+    <% end %>
+
+<% end %>
+
+<script>
+
+window.addEventListener("load", () => {
+  const forms = document.querySelectorAll("form.form_favoriteCity");
+  forms.forEach((e) => {
+    e.addEventListener("ajax:success", () => { e.remove(); });
+  });
+});
+
+</script>

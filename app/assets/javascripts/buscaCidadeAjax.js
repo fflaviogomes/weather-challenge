@@ -16,7 +16,8 @@ window.addEventListener("load", () => {
 
     //var postData = { city:   'banana' };
     //var postData = { city:   'guarulhos' };
-    var postData = { latlon: '-23.44,-46.54' };
+    //var postData = { latlon: '-23.44,-46.54' };
+    var postData = { latlon: `${crd.latitude},${crd.longitude}` };
 
     var myInit = {  method: 'POST',
                     headers: myHeaders,

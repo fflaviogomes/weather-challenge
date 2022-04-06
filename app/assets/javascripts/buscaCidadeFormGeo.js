@@ -1,7 +1,12 @@
 window.addEventListener("load", () => {
 
-  if ('geolocation' in navigator) {
-    navigator.geolocation.getCurrentPosition(buscaCidadeFormGeo, errBuscaCidadeFormGeo);
+  const i = document.querySelector("#f_cidade");
+
+  //Verifica se ainda não foi pré-selecionada alguma cidade
+  if(! (i.value) ) { 
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(buscaCidadeFormGeo, errBuscaCidadeFormGeo);
+    }
   }
 
   function buscaCidadeFormGeo(p) {
@@ -20,8 +25,6 @@ window.addEventListener("load", () => {
   }
 
   function atualizaFormGeo(d) {
-
-    var i = document.querySelector("#f_cidade");
 
     //Busca a cidade
     i.value = d[0].name;

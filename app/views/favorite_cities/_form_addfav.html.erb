@@ -1,0 +1,38 @@
+
+<%= form_with class: "form_addFavoriteCity", url: "/favorite_cities",  local: false, method: :create do |form| %>
+
+  <%= form.hidden_field :city, value: @weather.city %>
+
+  <%= form.submit "⭐", title: "Adicionar às Favoritas?", data: { disable_with: "⭐", confirm: "Deseja adicionar '#{@weather.city}' às cidades favoritas?" } %>
+
+<% end %>
+
+
+<script>
+
+window.addEventListener("load", () => {
+  const e = document.querySelector("form.form_addFavoriteCity");
+
+  e.addEventListener("ajax:success", sucessoInsereCidadeFavorita);
+  e.addEventListener("ajax:error",   () => { window.alert("Não foi possível adicionar '<%=@weather.city%>' às cidades favoritas. \n Registro duplicado? "); });
+
+});
+
+function sucessoInsereCidadeFavorita(event) {
+
+  const eAlvo = document.querySelector("#cidades_favoritas");
+  
+  const [_data, _status, xhr] = event.detail;
+
+  var jsonResponse = JSON.parse(xhr.response);
+
+  console.log(jsonResponse);
+
+  //eAlvo.insertAdjacentHTML("beforeend", jsonResponse.id);
+
+  window.alert("'<%=@weather.city%>' adicionada às cidades favoritas!");
+
+}
+
+
+</script>

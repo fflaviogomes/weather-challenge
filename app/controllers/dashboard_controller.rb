@@ -8,6 +8,7 @@ class DashboardController < ApplicationController
   def index
 
     @weather = get_weather2(city: get_cidade(), units: 'imperial')
+    @cidades = FavoriteCity.all
 
   end
 
