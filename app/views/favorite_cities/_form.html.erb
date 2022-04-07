@@ -13,16 +13,3 @@
     <% end %>
 
 <% end %>
-
-<script>
-
-window.addEventListener("load", () => f_formSelfDestroy);
-
-function f_formSelfDestroy() {
-  const forms = document.querySelectorAll("form.form_favoriteCity");
-  forms.forEach((e) => {
-    e.addEventListener("ajax:success", () => { e.remove(); });
-  });
-}
-
-</script>

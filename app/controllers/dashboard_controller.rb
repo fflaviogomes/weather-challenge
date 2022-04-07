@@ -78,7 +78,7 @@ class TempConv
 
 end
 
-def get_cidade (cidade_default = "Sao Paulo, BR")
+def get_cidade (cidade_default = "")
 
   #Busca cidade por GET
   return_cidade = params[:f_cidade];
@@ -91,7 +91,7 @@ def get_cidade (cidade_default = "Sao Paulo, BR")
 
     #Se não encontrar GeoLocation usa default
     if (return_cidade.blank?)
-      #Default: Sao Paulo, BR
+      #Default: ""
 
       return_cidade = cidade_default;
 

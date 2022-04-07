@@ -22,6 +22,9 @@ class FavoriteCitiesController < ApplicationController
     @cidade = FavoriteCity.find(params[:id])
     @cidade.destroy
 
+    #A linha abaixo trouxe melhoria de performance ao deletar
+    head :no_content
+
     #redirect_to root_path, status: :see_other
   end
 
