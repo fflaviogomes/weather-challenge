@@ -17,7 +17,7 @@ O sistema Weather Challenge permite acesso rápido à situação atual do clima 
 
 2. Se o sistema não localizar corretamente, ou se desejar localizar outra cidade, poderá ser feita uma nova busca através do campo "Pesquisar cidade", e do botão "Enviar".
 
-3. Após visualizar a previsão do clima o botão "⭐" permitirá, guardar a cidade encontrada na lista de "Cidades Favoritas".
+3. Após visualizar a previsão do clima o botão "⭐" permitirá guardar a cidade encontrada na lista de "Cidades Favoritas".
 
 4. Para excluir uma cidade da lista de "Cidades Favoritas" basta clicar no botão "❌" próximo à cidade que deseja remover da lista e depois confirmar a sua escolha.
 
