@@ -45,7 +45,7 @@
 
 <div>
   <%= form_with id: "formulario", url: "/",  local: false, method: :get do |form| %>
-    <%= form.label :f_cidade, "Pesquisar outra cidade:" %>
+    <%= form.label :f_cidade, "Pesquisar cidade:" %>
     <%= form.text_field :f_cidade, value: @weather&.city  %>
     <%= form.submit "Enviar", data: { disable_with: "Atualizando..." } %>
   <% end %>

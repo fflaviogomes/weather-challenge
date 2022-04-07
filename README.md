@@ -1,61 +1,38 @@
 # Weather Challenge
 
-This challenge is also available in english through the [link](https://github.com/bioritmo/weather-challenge/blob/master/README_en.md)
+Bem vindo ao sistema Weather Challenge! 
 
-## Objetivo
+O sistema Weather Challenge permite acesso rápido à situação atual do clima e tempo para várias cidades ao redor do mundo.
 
-O desafio basicamente consiste em ler uma API pública de previsão de tempo e implementar algumas simples funcionalidades.
-Esse mesmo desafio é usado para três posições.
->- **Backend**: Faça todo o o desafio abaixo sem se preocupar com Javascript, HTML. estilos etc.  
->- **Frontend**: Faça apenas as tarefas de 1 a 3 do desafio abaixo. Crie um projeto forntend zerado de sua escolha. Você deverá acessar a API de previsão de tempo diretamente. Não é necessário ter um sistema backend de apoio.
-> Você receberá um layout que deve ser implementado.
->- **Fullstack**: Faça todo o o desafio abaixo. Você pode criar o frontend junto ou separado desse projeto contudo a sua entrega
->deve ter instruções claras para execução de ambos. Você receberá um layout que deve ser implementado.    
+## Recursos do Sistema
 
-## O Desafio
+* Pesquisa rápida para qualquer cidade, bastando informar o nome da mesma.
+* Localização automática da cidade do usuário.
+* Armazenamento de suas Cidades Favoritas para um consulta rápida, a um clique de distância.
+* Exibe a temperatura em Graus Farenheit e Celsius, além de várias outras informações climáticas.
 
-Você recebeu a tarefa de desenvolver algumas features para um site de previsão do tempo.
+## Guia de uso
 
-O site pega a previsão de uma API pública e exibe na tela. Hoje o MVP só mostra a previsão de uma cidade fixa, São Paulo, e em Fahrenheit.
+1. Ao acessar o sistema tentará localizar automaticamente a posição do usuário, seja por Geolocalização IP ou por outras capacidades do dispositivo.
 
-A Análise de Negócios mapeou as seguintes histórias:
+2. Se o sistema não localizar corretamente, ou se desejar localizar outra cidade, poderá ser feita uma nova busca através do campo "Pesquisar cidade", e do botão "Enviar".
 
-1. Mostrar as temperaturas também em graus Celsius. Só que a API só permite chamar um tipo de temperatura por vez, então vamos fazer nossa própria conversão.
-2. Permitir o usuário buscar pela cidade vai querer ver a previsão. Nem todo mundo mora em São Paulo, afinal de contas.
-3. Obter a cidade do usuário automaticamente, mesmo que aproximado e deixar pré-escolhida como padrão.
-4. Queremos ter um aplicativo para celular, e para isso precisamos pegar a previsão do nosso próprio site.
-5. Ao invés de sempre ter que procurar a cidade, as pessoas poderiam se registrar e adicionar e remover cidades favoritas.
+3. Após visualizar a previsão do clima o botão "⭐" permitirá, guardar a cidade encontrada na lista de "Cidades Favoritas".
 
+4. Para excluir uma cidade da lista de "Cidades Favoritas" basta clicar no botão "❌" próximo à cidade que deseja remover da lista e depois confirmar a sua escolha.
 
-## Detalhes técnicos
+## Avançado
 
-Na história 1, faça uma classe para conversão de temperaturas. Ela recebe uma temperatura em Fahrenheit (F) e converte para Celsius (C). Use essa classe para exibir a temperatura na tela, ao lado da temperatura em Fahrenheit. 
+O sistema permite também acesso às informações via API no endpoint `/api/forecast?city=` ou `/api/forecast?latlon=`
 
-Na história 2, coloque um campo de texto para passar o nome da cidade, repasse para a API, e mostre a previsão da cidade selecionada. Bônus se fizer sem que seja necessário recarregar a página.
+* city="Nome da Cidade Desejada"
+* latlon="latitude,longitude"
 
-Na história 3, obtenha a cidade aproximada do usuário de alguma forma (você pode escolher alguma biblioteca ou API
-que te forneça essa informação) e mostre a previsão por padrão dessa cidade selecionada.
+* * Latitude e Longitude devem ser informados como valor real, decimais separados por "." 
+* * Latitude Leste representada por valores positivos; Oeste, negativo;
+* * Longitude Norte representada por valores positivos; Sul, negativo;
 
-Na história 4, faça uma API pública REST para consulta da previsão. O endpoint será `/api/forecast?city=` e deverá retornar um JSON, com os mesmos campos retornados pela API do OpenWeatherMap. Não é necessário implementar autenticação da API.
-
-Na história 5, crie uma tabela 'favorite_cities' e modele o banco a partir daí. Não precisa se preocupar com autenticação. Pode assumir que sempre haverá apenas um usuário.
-
-
-## Orientações gerais
-
-* Procure focar em pequenos entregáveis. Tem flexibilidade para escolher a ordem das entregas. **Tudo bem se não conseguir entregar tudo**. Use o tempo disponível **para apresentar a qualidade do seu código, sua criatividade e perícia em resolver problemas**. 
-* Nós iremos avaliar a qualidade no código, as boas práticas e sua atenção com a qualidade na implementação. Tenha atenção aos detalhes e
-busque tratar condições anormais de execução.
-* Caso não seja possível finalizar as histórias da maneira como você gostaria (pode ser esperado de acordo com o prazo enviado). Você pode complementar seu desafio com um texto ou comentários de como teria implementado a solução caso tivesse mais tempo. 
-* O README deverá ter instruções detalhadas de como rodar a aplicação e como gerar eventuais dados necessários a aplicação.
-* Envie-nos um link para um repositório seu ou um arquivo ZIP com a sua solução. **Não abra PRs para este repositório.**
-* Faça testes unitários para models e serviços. Testes de integração são bônus.
-* Se quiser mostrar suas habilidades em HTML/CSS, você pode estilizar a página como achar conveniente. Caso a vaga seja estritamente para trabalhar no backend, não precisa focar nessa parte.
-* Se quiser mostrar suas habilidades em Javascript puro ou algum framework JS, fique à vontade. Isso é particularmente importante caso a vaga seja de full-stack ou frontend.
-* Não abuse das chamadas à API do OpenWeatherMap, já que é uma conta free. Você pode configurar sua própria conta caso precise de mais chamadas. 
-* Documentação da API: [Current weather data - OpenWeatherMap](https://openweathermap.org/current)
-* Caso tenha alguma dúvida sobre esse desafio, você pode nos encaminhar via e-mail.
-## Instruções
+## Instruções de instalação
 
 ### Docker
 
