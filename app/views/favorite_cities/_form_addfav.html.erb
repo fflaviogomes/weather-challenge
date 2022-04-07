@@ -1,7 +1,7 @@
 
 <%= form_with class: "form_addFavoriteCity", url: "/favorite_cities",  local: false, method: :create do |form| %>
 
-  <h1>Weather for <%= @weather.city %>   
+  <h1>Clima em <%= @weather.city %>   
 
     <%= form.hidden_field :city, value: @weather.city %>
 
