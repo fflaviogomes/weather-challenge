@@ -1,7 +1,8 @@
 <div id="clima" />
 
-  <h1>Weather for <%= @weather.city %>   <%= render 'favorite_cities/form_addfav' %>
-  </h1>
+<% unless @weather.blank? %>
+
+  <%= render 'favorite_cities/form_addfav' %>
 
   <h2><%= @weather.temperature %>&ordm;F | 
       <%= @weather.temperatureC %>&ordm;C 
@@ -36,6 +37,8 @@
     </tbody>
   </table>
 
+<% end %>
+
 </div>
 
 <hr>
@@ -43,7 +46,7 @@
 <div>
   <%= form_with id: "formulario", url: "/",  local: false, method: :get do |form| %>
     <%= form.label :f_cidade, "Pesquisar outra cidade:" %>
-    <%= form.text_field :f_cidade, value: @weather.city %>
+    <%= form.text_field :f_cidade, value: @weather&.city  %>
     <%= form.submit "Enviar", data: { disable_with: "Atualizando..." } %>
   <% end %>
 </div>

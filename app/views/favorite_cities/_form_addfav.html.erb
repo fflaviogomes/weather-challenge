@@ -1,40 +1,12 @@
 
 <%= form_with class: "form_addFavoriteCity", url: "/favorite_cities",  local: false, method: :create do |form| %>
 
-  <%= form.hidden_field :city, value: @weather.city %>
+  <h1>Weather for <%= @weather.city %>   
 
-  <%= form.submit "⭐", title: "Adicionar às Favoritas?", data: { disable_with: "⭐", confirm: "Deseja adicionar '#{@weather.city}' às cidades favoritas?" } %>
+    <%= form.hidden_field :city, value: @weather.city %>
+
+    <%= form.submit "⭐", title: "Adicionar às Favoritas?", data: { disable_with: "⭐", confirm: "Deseja adicionar '#{@weather.city}' às cidades favoritas?" } %>
+
+  </h1>
 
 <% end %>
-
-
-<script>
-
-window.addEventListener("load", () => {
-  const element = document.querySelector("form.form_addFavoriteCity");
-
-  element.addEventListener("ajax:success", sucessoInsereCidadeFavorita);
-  element.addEventListener("ajax:error",   erroInsereCidadeFavorita);
-
-});
-
-function sucessoInsereCidadeFavorita(event) {
-
-  const eAlvo = document.querySelector("#cidades_favoritas");
-  
-  const [_data, _status, xhr] = event.detail;
-
-  eAlvo.innerHTML = xhr.response;
-
-  window.alert("'<%=@weather.city%>' adicionada às cidades favoritas!");
-
-  //atualiza o evento de remover cidade da listagem
-  f_formSelfDestroy()
-
-}
-
-function erroInsereCidadeFavorita(event) { 
-  window.alert("Não foi possível adicionar '<%=@weather.city%>' às cidades favoritas. \n Registro duplicado? "); 
-}
-
-</script>
