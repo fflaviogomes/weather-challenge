@@ -11,10 +11,10 @@
 <script>
 
 window.addEventListener("load", () => {
-  const e = document.querySelector("form.form_addFavoriteCity");
+  const element = document.querySelector("form.form_addFavoriteCity");
 
-  e.addEventListener("ajax:success", sucessoInsereCidadeFavorita);
-  e.addEventListener("ajax:error",   () => { window.alert("Não foi possível adicionar '<%=@weather.city%>' às cidades favoritas. \n Registro duplicado? "); });
+  element.addEventListener("ajax:success", sucessoInsereCidadeFavorita);
+  element.addEventListener("ajax:error",   erroInsereCidadeFavorita);
 
 });
 
@@ -24,15 +24,17 @@ function sucessoInsereCidadeFavorita(event) {
   
   const [_data, _status, xhr] = event.detail;
 
-  var jsonResponse = JSON.parse(xhr.response);
-
-  console.log(jsonResponse);
-
-  //eAlvo.insertAdjacentHTML("beforeend", jsonResponse.id);
+  eAlvo.innerHTML = xhr.response;
 
   window.alert("'<%=@weather.city%>' adicionada às cidades favoritas!");
 
+  //atualiza o evento de remover cidade da listagem
+  f_formSelfDestroy()
+
 }
 
+function erroInsereCidadeFavorita(event) { 
+  window.alert("Não foi possível adicionar '<%=@weather.city%>' às cidades favoritas. \n Registro duplicado? "); 
+}
 
 </script>

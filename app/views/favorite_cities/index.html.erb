@@ -6,7 +6,7 @@
       <% #form.hidden_field :id, value: cidade.id %>
       <%= form.submit "❌", data: { disable_with: "❌", confirm: "Confirma remoção de '#{cidade.city}' das cidades favoritas?" } %>
 
-        <a href="/dashboard/index?f_cidade=<%= cidade.city %>">
+        <a href="/?f_cidade=<%= cidade.city %>">
           <%= cidade.city %>
         </a>
 

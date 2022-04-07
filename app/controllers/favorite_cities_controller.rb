@@ -8,11 +8,14 @@ class FavoriteCitiesController < ApplicationController
 
     if @cidade.save
 
-      render json: @cidade;
+      @cidades = FavoriteCity.all
 
-    else
-      render :new, status: :unprocessable_entity
-    end
+      render partial: 'favorite_cities/form'
+
+    else      
+      head :unprocessable_entity
+
+    end    
   end
 
   def destroy
